@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="93741cb7-0a21-4131-b39c-5998443a7881" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_3/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_3/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_4/lib/providers/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_4/lib/providers/auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/lib/helpers/location_help.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../udemy/flutter-01/flutter_complete_guide_5/lib/helpers/location_help.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lisp/racket/HtDP2e/II/12-Projects: Lists.rkt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lisp/racket/HtDP2e/IV/22-Project: The Commerce of XML.rkt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lisp/racket/SPD/10b/lambda.rkt " beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1TfuQbp3mv7KINPKqIZZx1A2bsE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager" selected="Dart Command Line App.Functional.dart">
+    <configuration name="Functional.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/Functional.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Rectangle.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/Rectangle.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Shape.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/Shape.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Dart Command Line App.Rectangle.dart" />
+      <item itemvalue="Dart Command Line App.Shape.dart" />
+      <item itemvalue="Dart Command Line App.Functional.dart" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.Functional.dart" />
+        <item itemvalue="Dart Command Line App.Shape.dart" />
+        <item itemvalue="Dart Command Line App.Rectangle.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="93741cb7-0a21-4131-b39c-5998443a7881" name="Default Changelist" comment="" />
+      <created>1573863455656</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573863455656</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Create a simple Dart class.">
+      <created>1573864134941</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573864134941</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Use optional parameters (instead of overloading).">
+      <created>1573866733129</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573866733129</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Create a factory.">
+      <created>1573867472468</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573867472468</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implement an interface.">
+      <created>1573867594972</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573867594972</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Use Dart for functional programming.">
+      <created>1573867890961</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573867890961</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Create a simple Dart class." />
+    <MESSAGE value="Use optional parameters (instead of overloading)." />
+    <MESSAGE value="Create a factory." />
+    <MESSAGE value="Implement an interface." />
+    <MESSAGE value="Use Dart for functional programming." />
+    <option name="LAST_COMMIT_MESSAGE" value="Use Dart for functional programming." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1573866693752">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1573866693752" />
+    <state x="285" y="239" key="#com.intellij.ide.util.MemberChooser" timestamp="1573866967857">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="285" y="239" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1573866967857" />
+    <state x="275" y="313" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1573866692767">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="275" y="313" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1573866692767" />
+    <state x="134" y="117" key="CommitChangelistDialog2" timestamp="1573867884931">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="134" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1573867884931" />
+    <state x="397" y="315" key="FileChooserDialogImpl" timestamp="1575738838671">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="397" y="315" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1575738838671" />
+    <state width="914" height="186" key="GridCell.Tab.0.bottom" timestamp="1573868609855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="186" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1573868609855" />
+    <state width="914" height="186" key="GridCell.Tab.0.center" timestamp="1573868609855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="186" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1573868609855" />
+    <state width="914" height="186" key="GridCell.Tab.0.left" timestamp="1573868609855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="186" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1573868609855" />
+    <state width="914" height="186" key="GridCell.Tab.0.right" timestamp="1573868609855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="186" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1573868609855" />
+    <state x="0" y="246" width="1235" height="652" key="new project wizard" timestamp="1575738846482">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="246" width="1235" height="652" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1575738846482" />
+  </component>
+</project>
