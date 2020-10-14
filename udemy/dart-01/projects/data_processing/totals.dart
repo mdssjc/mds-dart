@@ -7,5 +7,8 @@ void main(List<String> arguments) {
   }
 
   final inputFile = arguments.first;
-  print(inputFile);
+  final lines = File(inputFile).readAsLinesSync();
+  for (var line in lines) {
+    print(line);
+  }
 }
