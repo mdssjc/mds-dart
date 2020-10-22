@@ -10,6 +10,11 @@ class Dog extends Animal {
   Dog({required int age}) : super(age: age);
 
   void bark() => print('bark');
+  @override
+  void sleep() {
+    super.sleep();
+    print('sleep some more');
+  }
 }
 
 class Cow extends Animal {
