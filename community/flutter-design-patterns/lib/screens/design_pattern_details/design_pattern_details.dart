@@ -5,9 +5,10 @@ import 'package:flutter_design_patterns/data/models/design_pattern.dart';
 import 'package:flutter_design_patterns/data/repositories/markdown_repository.dart';
 import 'package:flutter_design_patterns/screens/design_pattern_details/widgets/design_pattern_details_header.dart';
 import 'package:flutter_design_patterns/widgets/fade_slide_transition.dart';
-import 'package:flutter_design_patterns/widgets/platform_back_button.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'file:///F:/Repositorios/mds-dart/community/flutter-design-patterns/lib/widgets/platform_specific/platform_back_button.dart';
 
 class DesignPatternDetails extends StatefulWidget {
   final DesignPattern designPattern;

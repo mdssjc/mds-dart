@@ -1,27 +1,27 @@
 [
-    {
-        "id": "creational",
-        "title": "Creational",
-        "color": "0xFFF3D250",
-        "patterns": [
-            {
-                "id": "introduction",
-                "title": "Introduction",
-                "description": "Laborum qui ea velit sint officia culpa aute ad sint fugiat excepteur ex pariatur consectetur.",
-                "route": "/introduction"
-            }
-        ]
-    },
-    {
-        "id": "structural",
-        "title": "Structural",
-        "color": "0xFF90CCF4",
-        "patterns": []
-    },
-    {
-        "id": "behavioral",
-        "title": "Behavioral",
-        "color": "0xFFF78888",
-        "patterns": []
-    }
+  {
+    "id": "creational",
+    "title": "Creational",
+    "color": "0xFFF3D250",
+    "patterns": [
+      {
+        "id": "singleton",
+        "title": "Singleton",
+        "description": "Ensure a class only has one instance, and provide a global point of access to it.",
+        "route": "/singleton"
+      }
+    ]
+  },
+  {
+    "id": "structural",
+    "title": "Structural",
+    "color": "0xFF90CCF4",
+    "patterns": []
+  },
+  {
+    "id": "behavioral",
+    "title": "Behavioral",
+    "color": "0xFFF78888",
+    "patterns": []
+  }
 ]
