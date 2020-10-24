@@ -11,7 +11,7 @@ class ComingSoon extends StatelessWidget {
       child: Center(
         child: Text(
           'Coming Soon!',
-          style: Theme.of(context).textTheme.title.copyWith(
+          style: Theme.of(context).textTheme.headline6.copyWith(
                 color: Colors.white70,
               ),
         ),

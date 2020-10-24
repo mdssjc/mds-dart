@@ -1,33 +1,30 @@
 name: flutter_design_patterns
-description: Flutter Design Patterns Library
+description: A new Flutter project.
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.2 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^8.5.0
-  flutter_markdown: ^0.3.2
+  flutter_markdown: ^0.2.0
 
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^0.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
     - assets/
     - assets/data/
     - assets/markdown/
-    - assets/images/singleton/
-    - assets/images/adapter/
-    - assets/images/template_method/
   fonts:
     - family: Roboto
       fonts:

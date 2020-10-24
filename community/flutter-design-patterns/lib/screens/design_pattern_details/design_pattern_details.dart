@@ -5,7 +5,7 @@ import 'package:flutter_design_patterns/data/models/design_pattern.dart';
 import 'package:flutter_design_patterns/data/repositories/markdown_repository.dart';
 import 'package:flutter_design_patterns/screens/design_pattern_details/widgets/design_pattern_details_header.dart';
 import 'package:flutter_design_patterns/widgets/fade_slide_transition.dart';
-import 'package:flutter_design_patterns/widgets/platform_specific/platform_back_button.dart';
+import 'package:flutter_design_patterns/widgets/platform_back_button.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -82,9 +82,6 @@ class _DesignPatternDetailsState extends State<DesignPatternDetails>
 
   void onBottomNavigationBarItemTap(int index) {
     setState(() {
-      _appBarElevation = 0.0;
-      _appBarTitleOpacity = 0.0;
-      _bottomNavigationBarElevation = 4.0;
       _tabController.index = index;
     });
   }
@@ -110,11 +107,11 @@ class _DesignPatternDetailsState extends State<DesignPatternDetails>
           unselectedItemColor: Colors.black45,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              title: Text('Description'),
+              label: 'Description',
               icon: Icon(FontAwesomeIcons.fileAlt),
             ),
             BottomNavigationBarItem(
-              title: Text('Example'),
+              label: 'Example',
               icon: Icon(FontAwesomeIcons.lightbulb),
             ),
           ],
@@ -124,7 +121,7 @@ class _DesignPatternDetailsState extends State<DesignPatternDetails>
       body: Stack(
         children: <Widget>[
           Hero(
-            tag: "${widget.designPattern.id}_background",
+            tag: '${widget.designPattern.id}_background',
             child: Container(
               color: lightBackgroundColor,
             ),
@@ -194,7 +191,7 @@ class _DesignPatternDetailsState extends State<DesignPatternDetails>
                               FadeSlideTransition(
                                 controller: _fadeSlideAnimationController,
                                 slideAnimationTween: Tween<Offset>(
-                                  begin: Offset(0.0, 0.01),
+                                  begin: Offset(0.0, 0.05),
                                   end: Offset(0.0, 0.0),
                                 ),
                                 begin: _contentAnimationIntervalStart,
@@ -202,7 +199,7 @@ class _DesignPatternDetailsState extends State<DesignPatternDetails>
                                 child: FutureBuilder(
                                   future:
                                       repository.get(widget.designPattern.id),
-                                  initialData: "",
+                                  initialData: '',
                                   builder: (_, AsyncSnapshot<String> snapshot) {
                                     if (snapshot.hasData) {
                                       return MarkdownBody(

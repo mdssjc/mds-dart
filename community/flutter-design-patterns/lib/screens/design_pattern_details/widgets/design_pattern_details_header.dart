@@ -18,7 +18,7 @@ class DesignPatternDetailsHeader extends StatelessWidget {
           children: <Widget>[
             Text(
               designPattern.title,
-              style: Theme.of(context).textTheme.title.copyWith(
+              style: Theme.of(context).textTheme.headline6.copyWith(
                     fontSize: 32.0,
                   ),
             ),
@@ -30,7 +30,7 @@ class DesignPatternDetailsHeader extends StatelessWidget {
             Expanded(
               child: Text(
                 designPattern.description,
-                style: Theme.of(context).textTheme.subhead,
+                style: Theme.of(context).textTheme.subtitle1,
                 textAlign: TextAlign.justify,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 99,

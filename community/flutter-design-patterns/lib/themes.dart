@@ -10,32 +10,32 @@ final ThemeData lightTheme = ThemeData(
     tall: Typography.tall2018,
   ),
   textTheme: TextTheme(
-    display1: TextStyle(
+    headline4: TextStyle(
       fontFamily: 'RobotoMedium',
       fontSize: 34.0,
       color: Colors.black.withOpacity(0.75),
     ),
-    headline: TextStyle(
+    headline5: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 24.0,
       color: Colors.black.withOpacity(0.65),
     ),
-    title: TextStyle(
+    headline6: TextStyle(
       fontFamily: 'RobotoMedium',
       fontSize: 20.0,
       color: Colors.black.withOpacity(0.65),
     ),
-    subhead: TextStyle(
+    subtitle1: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 16.0,
       color: Colors.black.withOpacity(0.65),
     ),
-    body2: TextStyle(
+    bodyText1: TextStyle(
       fontFamily: 'RobotoMedium',
       fontSize: 14.0,
       color: Colors.black.withOpacity(0.65),
     ),
-    body1: TextStyle(
+    bodyText2: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 14.0,
       color: Colors.black.withOpacity(0.65),
