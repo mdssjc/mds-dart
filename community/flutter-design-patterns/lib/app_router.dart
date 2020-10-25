@@ -5,6 +5,7 @@ import 'package:flutter_design_patterns/data/models/design_pattern_category.dart
 import 'package:flutter_design_patterns/screens/category/category.dart';
 import 'package:flutter_design_patterns/screens/design_pattern_details/design_pattern_details.dart';
 import 'package:flutter_design_patterns/screens/main_menu/main_menu.dart';
+import 'package:flutter_design_patterns/widgets/design_patterns/adapter/adapter_example.dart';
 import 'package:flutter_design_patterns/widgets/design_patterns/singleton/singleton_example.dart';
 
 class AppRouter {
@@ -21,12 +22,22 @@ class AppRouter {
             category: category,
           ),
         );
+      // Creational
       case _DesignPatternRoutes.singletonRoute:
         var designPattern = settings.arguments as DesignPattern;
         return MaterialPageRoute(
           builder: (_) => DesignPatternDetails(
             designPattern: designPattern,
             example: SingletonExample(),
+          ),
+        );
+      // Structural
+      case _DesignPatternRoutes.adapterRoute:
+        var designPattern = settings.arguments as DesignPattern;
+        return MaterialPageRoute(
+          builder: (_) => DesignPatternDetails(
+            designPattern: designPattern,
+            example: AdapterExample(),
           ),
         );
       default:
@@ -39,4 +50,5 @@ class AppRouter {
 
 class _DesignPatternRoutes {
   static const String singletonRoute = '/singleton';
+  static const String adapterRoute = '/adapter';
 }
