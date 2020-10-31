@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
 
 class RandomWords extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => RandomWordsState();
+  State<StatefulWidget> createState() => _RandomWordsState();
 }
 
-class RandomWordsState extends State<RandomWords> {
+class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _saved = Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -57,7 +57,7 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
-    final bool alreadySaved = _saved.contains(pair);
+    final alreadySaved = _saved.contains(pair);
     return ListTile(
       title: Text(
         pair.asPascalCase,
