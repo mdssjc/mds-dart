@@ -37,6 +37,8 @@ class Cart {
     }
   }
 
+  bool get isEmpty => _items.isEmpty;
+
   double total() => _items.values
       .map((item) => item.price)
       .reduce((value, element) => value + element);
@@ -63,7 +65,6 @@ const allProducts = [
 
 void main() {
   final cart = Cart();
-
   while (true) {
     stdout.write(
         'What do you want to do? (v)iew items, (a)dd item, (c)heckout: ');
@@ -76,7 +77,11 @@ void main() {
       }
     } else if (line == 'v') {
       print(cart);
-    } else if (line == 'c') {}
+    } else if (line == 'c') {
+      if (checkout(cart)) {
+        break;
+      }
+    }
   }
 }
 
@@ -92,4 +97,30 @@ Product? chooseProduct() {
   }
   print('Not found');
   return null;
+}
+
+bool checkout(Cart cart) {
+  if (cart.isEmpty) {
+    print('Cart is empty');
+    return false;
+  }
+  final total = cart.total();
+  print('Total: \$$total');
+  stdout.write('Payment in cash: ');
+  final line = stdin.readLineSync();
+  if (line == null || line.isEmpty) {
+    return false;
+  }
+  final paid = double.tryParse(line);
+  if (paid == null) {
+    return false;
+  }
+  if (paid >= total) {
+    final change = paid - total;
+    print('Change: \$${change.toStringAsFixed(2)}');
+    return true;
+  } else {
+    print('Not enough cash.');
+    return false;
+  }
 }
