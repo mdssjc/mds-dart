@@ -4,6 +4,12 @@ import 'package:http/http.dart' as http;
 
 import 'weather.dart';
 
+class WeatherApiException implements Exception {
+  const WeatherApiException(this.message);
+
+  final String message;
+}
+
 class WeatherApiClient {
   static const baseUrl = 'www.metaweather.com';
   static const baseApi = 'api/location';
@@ -13,9 +19,12 @@ class WeatherApiClient {
 
     final locationResponse = await http.get(locationUrl);
     if (locationResponse.statusCode != 200) {
-      throw Exception('Error getting locationId for city: $city');
+      throw WeatherApiException('Error getting locationId for city: $city');
     }
     final locationJson = jsonDecode(locationResponse.body) as List;
+    if (locationJson.isEmpty) {
+      throw WeatherApiException('No location found for: $city');
+    }
     return locationJson.first['woeid'] as int;
   }
 
@@ -23,10 +32,15 @@ class WeatherApiClient {
     final weatherUrl = Uri.https(baseUrl, '$baseApi/$locationId');
     final weatherResponse = await http.get(weatherUrl);
     if (weatherResponse.statusCode != 200) {
-      throw Exception('Error getting weather for location: $locationId');
+      throw WeatherApiException(
+          'Error getting weather for location: $locationId');
     }
     final weatherJson = jsonDecode(weatherResponse.body);
     final consolidatedWeather = weatherJson['consolidated_weather'] as List;
+    if (consolidatedWeather.isEmpty) {
+      throw WeatherApiException(
+          'Weather data not available for locationId: $locationId');
+    }
     return Weather.fromJson(consolidatedWeather[0]);
   }
 
