@@ -25,9 +25,9 @@ class WeatherApiClient {
     if (weatherResponse.statusCode != 200) {
       throw Exception('Error getting weather for location: $locationId');
     }
-    print(weatherResponse.body);
     final weatherJson = jsonDecode(weatherResponse.body);
-    return Weather.fromJson(weatherJson);
+    final consolidatedWeather = weatherJson['consolidated_weather'] as List;
+    return Weather.fromJson(consolidatedWeather[0]);
   }
 
   Future<Weather> getWeather(String city) async {
