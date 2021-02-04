@@ -1,5 +1,6 @@
 # Day 1
 
+* 30 Days of Flutter - Kick Off
 * Instructions
 * Install Flutter
 * Documentation
