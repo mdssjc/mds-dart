@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:Shrine/supplemental/asymmetric_view.dart';
 import 'package:flutter/material.dart';
 
-import 'model/product.dart';
-import 'model/products_repository.dart';
-
 class HomePage extends StatelessWidget {
-  final Category category;
-
-  const HomePage({this.category: Category.all});
-
+  // TODO: Make a collection of cards (102)
+  // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    return AsymmetricView(
-      products: ProductsRepository.loadProducts(category),
+    // TODO: Return an AsymmetricView (104)
+    // TODO: Pass Category variable to AsymmetricView (104)
+    return Scaffold(
+      // TODO: Add app bar (102)
+      // TODO: Add a grid view (102)
+      body: Center(
+        child: Text('You did it!'),
+      ),
+      // TODO: Set resizeToAvoidBottomInset (101)
     );
   }
 }
