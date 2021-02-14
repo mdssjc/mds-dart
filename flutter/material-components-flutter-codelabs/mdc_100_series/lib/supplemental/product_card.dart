@@ -24,7 +24,7 @@ class ProductCard extends StatelessWidget {
   final double imageAspectRatio;
   final Product product;
 
-  static final kTextBoxHeight = 65.0;
+  static final kTextBoxHeight = 65;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class ProductCard extends StatelessWidget {
         ),
         SizedBox(
           height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
-          width: 121.0,
+          width: 121,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +60,7 @@ class ProductCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
-              SizedBox(height: 4.0),
+              SizedBox(height: 4),
               Text(
                 product == null ? '' : formatter.format(product.price),
                 style: theme.textTheme.subtitle2,
