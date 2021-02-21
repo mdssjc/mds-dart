@@ -24,9 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Baby Name Votes'),
-      ),
+      appBar: AppBar(title: Text('Baby Name Votes')),
       body: _buildBody(context),
     );
   }
@@ -36,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
       stream: Firestore.instance.collection('baby').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
+
         return _buildList(context, snapshot.data.documents);
       },
     );
@@ -62,13 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListTile(
           title: Text(record.name),
           trailing: Text(record.votes.toString()),
-          onTap: () => Firestore.instance.runTransaction((transaction) async {
-                final freshSnapshot = await transaction.get(record.reference);
-                final fresh = Record.fromSnapshot(freshSnapshot);
-
-                await transaction
-                    .update(record.reference, {'votes': fresh.votes + 1});
-              }),
+          onTap: () =>
+              record.reference.updateData({'votes': FieldValue.increment(1)}),
         ),
       ),
     );
