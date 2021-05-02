@@ -4,17 +4,15 @@ import 'chat_controller.dart';
 import 'chat_page.dart';
 import 'repositories/chat_repository.dart';
 
-class ChatModule extends ChildModule {
+class ChatModule extends Module {
   @override
-  List<Bind> get binds => [
-        $ChatController,
-        $ChatRepository,
-      ];
+  final List<Bind> binds = [
+    $ChatController,
+    $ChatRepository,
+  ];
 
   @override
-  List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, args) => ChatPage()),
-      ];
-
-  static Inject get to => Inject<ChatModule>.of();
+  final List<ModularRoute> routes = [
+    ChildRoute(Modular.initialRoute, child: (_, args) => ChatPage()),
+  ];
 }

@@ -8,6 +8,6 @@ part of 'chat_repository.dart';
 
 final $ChatRepository = BindInject(
   (i) => ChatRepository(),
-  singleton: true,
-  lazy: true,
+  isSingleton: true,
+  isLazy: true,
 );

@@ -8,8 +8,8 @@ part of 'chat_controller.dart';
 
 final $ChatController = BindInject(
   (i) => ChatController(),
-  singleton: true,
-  lazy: true,
+  isSingleton: true,
+  isLazy: true,
 );
 
 // **************************************************************************

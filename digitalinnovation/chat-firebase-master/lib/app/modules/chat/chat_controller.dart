@@ -1,13 +1,11 @@
 import 'package:chat_online/app/domain/message.dart';
 import 'package:chat_online/app/domain/user.dart';
-import 'package:chat_online/app/modules/chat/chat_module.dart';
 import 'package:chat_online/app/modules/chat/repositories/chat_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../app_controller.dart';
-import '../../app_module.dart';
 
 part 'chat_controller.g.dart';
 
@@ -15,8 +13,8 @@ part 'chat_controller.g.dart';
 class ChatController = _ChatControllerBase with _$ChatController;
 
 abstract class _ChatControllerBase with Store {
-  ChatRepository _repository = ChatModule.to.get<ChatRepository>();
-  AppController _appController = AppModule.to.get<AppController>();
+  ChatRepository _repository = Modular.get<ChatRepository>();
+  AppController _appController = Modular.get<AppController>();
 
   TextEditingController messageTextController = TextEditingController(text: '');
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../app_controller.dart';
-import '../../app_module.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  AppController _appController = AppModule.to.get<AppController>();
+  AppController _appController = Modular.get<AppController>();
 
   GlobalKey<FormState> _formKey = GlobalKey();
 
