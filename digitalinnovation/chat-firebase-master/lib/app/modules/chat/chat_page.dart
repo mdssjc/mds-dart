@@ -12,8 +12,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends ModularState<ChatPage, ChatController> {
-  //use 'controller' variable to access controller
-
   @override
   void initState() {
     super.initState();
@@ -66,7 +64,7 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
     );
   }
 
-  Expanded _buildMessages() {
+  Widget _buildMessages() {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -118,7 +116,7 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
     );
   }
 
-  Row _buildOthersUserInfo(Message message) {
+  Widget _buildOthersUserInfo(Message message) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -135,7 +133,7 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
     );
   }
 
-  Row _buildUsernameInfo(Message message) {
+  Widget _buildUsernameInfo(Message message) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -158,12 +156,12 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
   }
 
   String formatDate(DateTime time) {
-    final df = new DateFormat('HH:mm - dd/MM/yyyy ');
+    final df = DateFormat('HH:mm - dd/MM/yyyy ');
     return df.format(time);
   }
 
   String formatDateOwnerUser(DateTime time) {
-    final df = new DateFormat('dd/MM/yyyy - HH:mm');
+    final df = DateFormat('dd/MM/yyyy - HH:mm');
     return df.format(time);
   }
 

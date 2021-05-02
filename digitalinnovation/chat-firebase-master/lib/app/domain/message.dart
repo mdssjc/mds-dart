@@ -12,7 +12,10 @@ class Message {
       : id = id,
         sendDate = DateTime.parse(map['sendDate']),
         message = map['message'],
-        user = User(map['userId'], map['userName']);
+        user = User(
+          map['userId'],
+          map['userName'],
+        );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

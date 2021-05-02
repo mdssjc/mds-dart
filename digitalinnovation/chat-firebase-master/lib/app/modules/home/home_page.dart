@@ -40,7 +40,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                       key: _formKey,
                       child: Column(
                         children: <Widget>[
-                          _builLoginField(),
+                          _buildLoginField(),
                           _buildLoginButton()
                         ],
                       ),
@@ -55,7 +55,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     );
   }
 
-  Widget _builLoginField() {
+  Widget _buildLoginField() {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextFormField(
@@ -68,9 +68,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         style: TextStyle(fontSize: 18.0),
         onChanged: (val) {
-          setState(() {
-            controller.name = val;
-          });
+          setState(() => controller.name = val);
         },
       ),
     );

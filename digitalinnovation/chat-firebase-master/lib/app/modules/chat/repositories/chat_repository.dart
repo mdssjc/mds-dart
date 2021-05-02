@@ -7,9 +7,7 @@ part 'chat_repository.g.dart';
 @Injectable()
 class ChatRepository extends Disposable {
   @override
-  void dispose() {
-    //dispose will be called automatically
-  }
+  void dispose() {}
 
   DatabaseReference retrieveChatReference() {
     return FirebaseDatabase.instance.reference().child('chat');
