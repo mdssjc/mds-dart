@@ -12,6 +12,8 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends ModularState<ChatPage, ChatController> {
+  GlobalKey<FormState> _formKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -25,11 +27,14 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
         centerTitle: true,
         title: Text('Chat'),
       ),
-      body: Column(
-        children: <Widget>[
-          _buildMessages(),
-          _buildInputField(),
-        ],
+      body: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            _buildMessages(),
+            _buildInputField(),
+          ],
+        ),
       ),
     );
   }
@@ -47,17 +52,29 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(30))),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
+                  padding: const EdgeInsets.only(left: 18.0),
                   child: TextFormField(
                     controller: controller.messageTextController,
+                    validator: (message) => message.isEmpty
+                        ? "Entre primeiro com sua mensagem!"
+                        : null,
                     decoration: InputDecoration(
-                        labelText: 'Digite aqui', border: InputBorder.none),
+                      labelText: 'Digite aqui sua mensagem',
+                      border: InputBorder.none,
+                    ),
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
               ),
             ),
-            IconButton(icon: Icon(Icons.send), onPressed: () => _sendMessage())
+            IconButton(
+              icon: Icon(Icons.send),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  return _sendMessage();
+                }
+              },
+            ),
           ],
         ),
       ),
@@ -170,7 +187,7 @@ class _ChatPageState extends ModularState<ChatPage, ChatController> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Deseja Excluir?'),
+          title: Text('Deseja excluir a mensagem?'),
           actions: [
             MaterialButton(
               color: Colors.red,

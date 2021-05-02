@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   AppController _appController = Modular.get<AppController>();
-
   GlobalKey<FormState> _formKey = GlobalKey();
 
   @override
@@ -59,8 +58,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextFormField(
-        validator: (val) =>
-            controller.name == null ? 'Campo Obrigatório' : null,
+        validator: (val) => controller.name == null || controller.name.isEmpty
+            ? 'Campo Obrigatório'
+            : null,
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.account_circle),
           labelText: 'Nome',
