@@ -1,4 +1,4 @@
-package com.github.mdssjc.startup_namer
+package dev.marcelomds.startup_namer
 
 import io.flutter.embedding.android.FlutterActivity
 

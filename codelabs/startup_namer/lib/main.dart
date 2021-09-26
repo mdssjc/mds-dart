@@ -1,9 +1,11 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,28 +13,30 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: RandomWords(),
+      home: const RandomWords(),
     );
   }
 }
 
 class RandomWords extends StatefulWidget {
+  const RandomWords({Key? key}) : super(key: key);
+
   @override
   _RandomWordsState createState() => _RandomWordsState();
 }
 
 class _RandomWordsState extends State<RandomWords> {
   final List<WordPair> _suggestions = <WordPair>[];
-  final _saved = Set<WordPair>();
+  final _saved = <WordPair>{};
   final TextStyle _biggerFont = const TextStyle(fontSize: 18);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name Generator'),
+        title: const Text('Startup Name Generator'),
         actions: [
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved),
         ],
       ),
       body: _buildSuggestions(),
@@ -44,7 +48,7 @@ class _RandomWordsState extends State<RandomWords> {
       padding: const EdgeInsets.all(16),
       itemBuilder: (BuildContext _context, int i) {
         if (i.isOdd) {
-          return Divider();
+          return const Divider();
         }
 
         final int index = i ~/ 2;
@@ -102,7 +106,7 @@ class _RandomWordsState extends State<RandomWords> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('Saved Suggestions'),
+              title: const Text('Saved Suggestions'),
             ),
             body: ListView(children: divided),
           );
