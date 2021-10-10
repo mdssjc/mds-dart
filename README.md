@@ -5,14 +5,17 @@ Este repositório é destinado para a linguagem Dart/Flutter.
 ## Codelabs
 
 * Write Your First Flutter App
-    * **flutter/startup_namer** [Write your first Flutter app, part 1](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1 "Write your first Flutter app, part 1")
-    * **flutter/startup_namer** [Write Your First Flutter App, part 2](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2 "Write Your First Flutter App, part 2")
+    * **codelabs/startup_namer** [Write your first Flutter app, part 1](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt1 "Write your first Flutter app, part 1")
+    * **codelabs/startup_namer** [Write Your First Flutter App, part 2](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2 "Write Your First Flutter App, part 2")
+
+* Building beautiful UIs with Flutter
+    * **codelabs/friendly_chat** [Building beautiful UIs with Flutter](https://codelabs.developers.google.com/codelabs/flutter "Building beautiful UIs with Flutter")
 
 * MDC Flutter
-    * **flutter/material-components-flutter-codelabs/mdc_100_series** [MDC-101 Flutter: Material Components (MDC) Basics (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-101-flutter "MDC-101 Flutter: Material Components (MDC) Basics (Flutter)")
-    * **flutter/material-components-flutter-codelabs/mdc_100_series** [MDC-102 Flutter: Material Structure and Layout (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-102-flutter "MDC-102 Flutter: Material Structure and Layout (Flutter)")
-    * **flutter/material-components-flutter-codelabs/mdc_100_series** [MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-103-flutter "MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type (Flutter)")
-    * **flutter/material-components-flutter-codelabs/mdc_100_series** [MDC-104 Flutter: Material Advanced Components (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-104-flutter "MDC-104 Flutter: Material Advanced Components (Flutter)")
+    * **codelabs/material-components-flutter-codelabs/mdc_100_series** [MDC-101 Flutter: Material Components (MDC) Basics (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-101-flutter "MDC-101 Flutter: Material Components (MDC) Basics (Flutter)")
+    * **codelabs/material-components-flutter-codelabs/mdc_100_series** [MDC-102 Flutter: Material Structure and Layout (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-102-flutter "MDC-102 Flutter: Material Structure and Layout (Flutter)")
+    * **codelabs/material-components-flutter-codelabs/mdc_100_series** [MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-103-flutter "MDC-103 Flutter: Material Theming with Color, Shape, Elevation, and Type (Flutter)")
+    * **codelabs/material-components-flutter-codelabs/mdc_100_series** [MDC-104 Flutter: Material Advanced Components (Flutter)](https://codelabs.developers.google.com/codelabs/mdc-104-flutter "MDC-104 Flutter: Material Advanced Components (Flutter)")
 
 ## Udemy
 
