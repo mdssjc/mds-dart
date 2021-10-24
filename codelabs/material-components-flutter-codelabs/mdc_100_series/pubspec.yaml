@@ -1,29 +1,31 @@
-name: Shrine
-description: Learn the basics of using Material Components by building a simple app with core components.
+name: shrine
+description: An e-commerce app that sells clothing and home goods.
+publish_to: 'none'
+version: 1.0.0+1
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.3
   intl: ^0.17.0
-
-  cupertino_icons: ^1.0.2
-  shrine_images: 1.1.1
+  shrine_images: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^1.0.4
 
 flutter:
-  fonts:
-    - family: Rubik
-      fonts:
-        - asset: fonts/Rubik-Regular.ttf
-        - asset: fonts/Rubik-Medium.ttf
-          weight: 500
   uses-material-design: true
+  fonts:
+  - family: Rubik
+    fonts:
+      - asset: fonts/Rubik-Regular.ttf
+      - asset: fonts/Rubik-Medium.ttf
+        weight: 500
   assets:
     - assets/diamond.png
     - assets/slanted_menu.png

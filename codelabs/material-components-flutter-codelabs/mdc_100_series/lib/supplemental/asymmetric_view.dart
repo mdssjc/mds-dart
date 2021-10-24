@@ -1,17 +1,3 @@
-// Copyright 2018-present the Flutter authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'package:flutter/material.dart';
 
 import '../model/product.dart';
@@ -20,10 +6,10 @@ import 'product_columns.dart';
 class AsymmetricView extends StatelessWidget {
   final List<Product> products;
 
-  AsymmetricView({Key key, this.products});
+  const AsymmetricView({Key? key, required this.products}) : super(key: key);
 
-  List<Container> _buildColumns(BuildContext context) {
-    if (products == null || products.isEmpty) {
+  List<Widget> _buildColumns(BuildContext context) {
+    if (products.isEmpty) {
       return <Container>[];
     }
 
@@ -46,17 +32,17 @@ class AsymmetricView extends StatelessWidget {
             top: products.length - 1 >= bottom + 1
                 ? products[bottom + 1]
                 : null);
-        width += 32;
+        width += 32.0;
       } else {
         /// Odd cases
         column = OneProductCardColumn(
           product: products[_oddCasesIndex(index)],
         );
       }
-      return Container(
+      return SizedBox(
         width: width,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: column,
         ),
       );
@@ -88,7 +74,7 @@ class AsymmetricView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.fromLTRB(0, 34, 16, 44),
+      padding: const EdgeInsets.fromLTRB(0.0, 34.0, 16.0, 44.0),
       children: _buildColumns(context),
     );
   }

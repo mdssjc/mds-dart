@@ -1,50 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/services.dart';
 
-import 'login.dart';
 import 'model/product.dart';
+import 'login.dart';
 
-const double _kFlingVelocity = 2;
-
-class Backdrop extends StatefulWidget {
-  final Category currentCategory;
-  final Widget frontLayer;
-  final Widget backLayer;
-  final Widget frontTitle;
-  final Widget backTitle;
-
-  const Backdrop({
-    @required this.currentCategory,
-    @required this.frontLayer,
-    @required this.backLayer,
-    @required this.frontTitle,
-    @required this.backTitle,
-  })  : assert(currentCategory != null),
-        assert(frontLayer != null),
-        assert(backLayer != null),
-        assert(frontTitle != null),
-        assert(backTitle != null);
-
-  @override
-  _BackdropState createState() => _BackdropState();
-}
+const double _kFlingVelocity = 2.0;
 
 class _FrontLayer extends StatelessWidget {
   const _FrontLayer({
-    Key key,
+    Key? key,
     this.onTap,
-    this.child,
+    required this.child,
   }) : super(key: key);
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 16,
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(46)),
+      elevation: 16.0,
+      shape: const BeveledRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(46.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,7 +30,7 @@ class _FrontLayer extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              height: 40,
+              height: 40.0,
               alignment: AlignmentDirectional.centerStart,
             ),
           ),
@@ -67,46 +44,47 @@ class _FrontLayer extends StatelessWidget {
 }
 
 class _BackdropTitle extends AnimatedWidget {
-  final Function onPress;
+  final void Function() onPress;
   final Widget frontTitle;
   final Widget backTitle;
 
   const _BackdropTitle({
-    Key key,
-    Listenable listenable,
-    this.onPress,
-    @required this.frontTitle,
-    @required this.backTitle,
-  })  : assert(frontTitle != null),
-        assert(backTitle != null),
+    Key? key,
+    required Animation<double> listenable,
+    required this.onPress,
+    required this.frontTitle,
+    required this.backTitle,
+  })  : _listenable = listenable,
         super(key: key, listenable: listenable);
+
+  final Animation<double> _listenable;
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> animation = this.listenable;
+    final Animation<double> animation = _listenable;
 
     return DefaultTextStyle(
-      style: Theme.of(context).primaryTextTheme.headline6,
+      style: Theme.of(context).textTheme.headline6!,
       softWrap: false,
       overflow: TextOverflow.ellipsis,
       child: Row(children: <Widget>[
         // branded icon
         SizedBox(
-          width: 72,
+          width: 72.0,
           child: IconButton(
-            padding: EdgeInsets.only(right: 8),
-            onPressed: this.onPress,
+            padding: const EdgeInsets.only(right: 8.0),
+            onPressed: onPress,
             icon: Stack(children: <Widget>[
               Opacity(
                 opacity: animation.value,
-                child: ImageIcon(AssetImage('assets/slanted_menu.png')),
+                child: const ImageIcon(AssetImage('assets/slanted_menu.png')),
               ),
               FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
-                  end: Offset(1, 0),
+                  end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
-                child: ImageIcon(AssetImage('assets/diamond.png')),
+                child: const ImageIcon(AssetImage('assets/diamond.png')),
               )
             ]),
           ),
@@ -118,27 +96,31 @@ class _BackdropTitle extends AnimatedWidget {
             Opacity(
               opacity: CurvedAnimation(
                 parent: ReverseAnimation(animation),
-                curve: Interval(0.5, 1),
+                curve: const Interval(0.5, 1.0),
               ).value,
               child: FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
-                  end: Offset(0.5, 0),
+                  end: const Offset(0.5, 0.0),
                 ).evaluate(animation),
-                child: backTitle,
+                child: Semantics(
+                    label: 'hide categories menu',
+                    child: ExcludeSemantics(child: backTitle)),
               ),
             ),
             Opacity(
               opacity: CurvedAnimation(
                 parent: animation,
-                curve: Interval(0.5, 1),
+                curve: const Interval(0.5, 1.0),
               ).value,
               child: FractionalTranslation(
                 translation: Tween<Offset>(
-                  begin: Offset(-0.25, 0),
+                  begin: const Offset(-0.25, 0.0),
                   end: Offset.zero,
                 ).evaluate(animation),
-                child: frontTitle,
+                child: Semantics(
+                    label: 'show categories menu',
+                    child: ExcludeSemantics(child: frontTitle)),
               ),
             ),
           ],
@@ -148,18 +130,43 @@ class _BackdropTitle extends AnimatedWidget {
   }
 }
 
+/// Builds a Backdrop.
+///
+/// A Backdrop widget has two layers, front and back. The front layer is shown
+/// by default, and slides down to show the back layer, from which a user
+/// can make a selection. The user can also configure the titles for when the
+/// front or back layer is showing.
+class Backdrop extends StatefulWidget {
+  final Category currentCategory;
+  final Widget frontLayer;
+  final Widget backLayer;
+  final Widget frontTitle;
+  final Widget backTitle;
+
+  const Backdrop({
+    required this.currentCategory,
+    required this.frontLayer,
+    required this.backLayer,
+    required this.frontTitle,
+    required this.backTitle,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _BackdropState createState() => _BackdropState();
+}
+
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
-
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(milliseconds: 300),
-      value: 1,
+      duration: const Duration(milliseconds: 300),
+      value: 1.0,
       vsync: this,
     );
   }
@@ -193,13 +200,14 @@ class _BackdropState extends State<Backdrop>
   }
 
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
-    const double layerTitleHeight = 48;
+    const double layerTitleHeight = 48.0;
     final Size layerSize = constraints.biggest;
     final double layerTop = layerSize.height - layerTitleHeight;
 
     Animation<RelativeRect> layerAnimation = RelativeRectTween(
-      begin: RelativeRect.fromLTRB(0, layerTop, 0, layerTop - layerSize.height),
-      end: RelativeRect.fromLTRB(0, 0, 0, 0),
+      begin: RelativeRect.fromLTRB(
+          0.0, layerTop, 0.0, layerTop - layerSize.height),
+      end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
     ).animate(_controller.view);
 
     return Stack(
@@ -223,9 +231,9 @@ class _BackdropState extends State<Backdrop>
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
-      brightness: Brightness.light,
-      elevation: 0,
-      titleSpacing: 0,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+      elevation: 0.0,
+      titleSpacing: 0.0,
       title: _BackdropTitle(
         listenable: _controller.view,
         onPress: _toggleBackdropLayerVisibility,
@@ -234,26 +242,28 @@ class _BackdropState extends State<Backdrop>
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.search,
-            semanticLabel: 'login', // New code
+            semanticLabel: 'login',
           ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginPage()),
             );
           },
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.tune,
-            semanticLabel: 'login', // New code
+            semanticLabel: 'login',
           ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginPage()),
             );
           },
         ),
@@ -261,7 +271,9 @@ class _BackdropState extends State<Backdrop>
     );
     return Scaffold(
       appBar: appBar,
-      body: LayoutBuilder(builder: _buildStack),
+      body: LayoutBuilder(
+        builder: _buildStack,
+      ),
     );
   }
 }
