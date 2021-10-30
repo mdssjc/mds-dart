@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../fooderlich_theme.dart';
 import 'circle_image.dart';
-import 'fooderlich_theme.dart';
 
 class AuthorCard extends StatefulWidget {
   final String authorName;
@@ -16,7 +16,7 @@ class AuthorCard extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<AuthorCard> createState() => _AuthorCardState();
+  _AuthorCardState createState() => _AuthorCardState();
 }
 
 class _AuthorCardState extends State<AuthorCard> {
@@ -55,9 +55,11 @@ class _AuthorCardState extends State<AuthorCard> {
             icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
             iconSize: 30,
             color: Colors.red[400],
-            onPressed: () => setState(
-              () => _isFavorited = !_isFavorited,
-            ),
+            onPressed: () {
+              setState(() {
+                _isFavorited = !_isFavorited;
+              });
+            },
           ),
         ],
       ),
