@@ -1,23 +1,28 @@
 import 'dart:convert';
 import 'dart:io';
 
-Future<int> calculate(input) async {
-  int measurement = 0;
+Future<int> calculate(input, {window = 1}) async {
+  int count = 0;
 
   List<int> measurements = await File(input)
       .openRead()
       .transform(utf8.decoder)
       .transform(LineSplitter())
-      .map((event) => int.parse(event))
+      .map(int.parse)
       .toList();
 
-  int lastMeasurement = measurements.first;
-  for (var i = 1; i < measurements.length; i++) {
-    if (measurements[i] > lastMeasurement) {
-      measurement++;
+  int lastMeasurement =
+      measurements.take(window).reduce((value, element) => element + value);
+  for (var i = 1; i <= measurements.length - window; i++) {
+    var measurement = measurements
+        .skip(i)
+        .take(window)
+        .reduce((value, element) => element + value);
+    if (measurement > lastMeasurement) {
+      count++;
     }
-    lastMeasurement = measurements[i];
+    lastMeasurement = measurement;
   }
 
-  return measurement;
+  return count;
 }
