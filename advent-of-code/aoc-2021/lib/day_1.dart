@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-Future<int> calculate(input, {window = 1}) async {
+Future<int> execute(input, {window = 1}) async {
   int count = 0;
 
   List<int> measurements = await File(input)
