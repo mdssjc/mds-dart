@@ -10,5 +10,7 @@ void main() {
 
   test('day 2', () {
     expect(day2.execute('assets/day_2_basic'), completion(150));
+    expect(
+        day2.execute('assets/day_2_basic', precision: true), completion(900));
   });
 }
