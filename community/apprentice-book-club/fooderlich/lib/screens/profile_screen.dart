@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/circle_image.dart';
 import '../models/models.dart';
@@ -7,17 +9,13 @@ import '../models/models.dart';
 class ProfileScreen extends StatefulWidget {
   static MaterialPage page(User user) {
     return MaterialPage(
-      name: FooderlichPages.profilePath,
-      key: ValueKey(FooderlichPages.profilePath),
-      child: ProfileScreen(user: user),
-    );
+        name: FooderlichPages.profilePath,
+        key: ValueKey(FooderlichPages.profilePath),
+        child: ProfileScreen(user: user));
   }
 
   final User user;
-  const ProfileScreen({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
+  const ProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -42,9 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             const SizedBox(height: 16.0),
             buildProfile(),
-            Expanded(
-              child: buildMenu(),
-            )
+            Expanded(child: buildMenu())
           ],
         ),
       ),
@@ -57,9 +53,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         buildDarkModeRow(),
         ListTile(
           title: const Text('View raywenderlich.com'),
-          onTap: () {
-            Provider.of<ProfileManager>(context, listen: false)
-                .tapOnRaywenderlich(true);
+          onTap: () async {
+            if (kIsWeb) {
+              await launch('https://www.raywenderlich.com/');
+            } else {
+              Provider.of<ProfileManager>(context, listen: false)
+                  .tapOnRaywenderlich(true);
+            }
           },
         ),
         ListTile(
@@ -82,12 +82,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           const Text('Dark Mode'),
           Switch(
-            value: widget.user.darkMode,
-            onChanged: (value) {
-              Provider.of<ProfileManager>(context, listen: false).darkMode =
-                  value;
-            },
-          )
+              value: widget.user.darkMode,
+              onChanged: (value) {
+                Provider.of<ProfileManager>(context, listen: false).darkMode =
+                    value;
+              })
         ],
       ),
     );
@@ -103,9 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(height: 16.0),
         Text(
           widget.user.firstName,
-          style: const TextStyle(
-            fontSize: 21,
-          ),
+          style: const TextStyle(fontSize: 21),
         ),
         Text(widget.user.role),
         Text(

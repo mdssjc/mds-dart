@@ -30,6 +30,7 @@ class EmptyGroceryScreen extends StatelessWidget {
               'Tap the + button to write them down!',
               textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 16.0),
             MaterialButton(
               textColor: Colors.white,
               child: const Text('Browse Recipes'),

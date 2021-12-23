@@ -6,10 +6,9 @@ import '../models/models.dart';
 class SplashScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
-      name: FooderlichPages.splashPath,
-      key: ValueKey(FooderlichPages.splashPath),
-      child: const SplashScreen(),
-    );
+        name: FooderlichPages.splashPath,
+        key: ValueKey(FooderlichPages.splashPath),
+        child: const SplashScreen());
   }
 
   const SplashScreen({Key? key}) : super(key: key);
@@ -36,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 200,
               image: AssetImage('assets/fooderlich_assets/rw_logo.png'),
             ),
-            const Text('Initializing...'),
+            const Text('Initializing...')
           ],
         ),
       ),

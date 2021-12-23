@@ -8,10 +8,9 @@ import '../models/models.dart';
 class WebViewScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
-      name: FooderlichPages.raywenderlich,
-      key: ValueKey(FooderlichPages.raywenderlich),
-      child: const WebViewScreen(),
-    );
+        name: FooderlichPages.raywenderlich,
+        key: ValueKey(FooderlichPages.raywenderlich),
+        child: const WebViewScreen());
   }
 
   const WebViewScreen({Key? key}) : super(key: key);
@@ -24,7 +23,6 @@ class WebViewScreenState extends State<WebViewScreen> {
   @override
   void initState() {
     super.initState();
-    // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 

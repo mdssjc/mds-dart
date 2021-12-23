@@ -30,7 +30,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   static List<Widget> pages = <Widget>[
-    const ExploreScreen(),
+    ExploreScreen(),
     RecipesScreen(),
     const GroceryScreen(),
   ];
@@ -49,7 +49,10 @@ class _HomeState extends State<Home> {
               profileButton(),
             ],
           ),
-          body: IndexedStack(index: widget.currentTab, children: pages),
+          body: IndexedStack(
+            index: widget.currentTab,
+            children: pages,
+          ),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor:
                 Theme.of(context).textSelectionTheme.selectionColor,
@@ -84,9 +87,7 @@ class _HomeState extends State<Home> {
       child: GestureDetector(
         child: const CircleAvatar(
           backgroundColor: Colors.transparent,
-          backgroundImage: AssetImage(
-            'assets/profile_pics/person_stef.jpeg',
-          ),
+          backgroundImage: AssetImage('assets/profile_pics/person_stef.jpeg'),
         ),
         onTap: () {
           Provider.of<ProfileManager>(context, listen: false)

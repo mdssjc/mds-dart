@@ -40,9 +40,7 @@ class Card3 extends StatelessWidget {
             image: AssetImage(recipe.backgroundImage),
             fit: BoxFit.cover,
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10.0),
-          ),
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
         child: Stack(
           children: [
@@ -63,17 +61,20 @@ class Card3 extends StatelessWidget {
                     size: 40,
                   ),
                   const SizedBox(height: 8),
-                  Text(recipe.title,
-                      style: FooderlichTheme.darkTextTheme.headline2),
+                  Text(
+                    recipe.title,
+                    style: FooderlichTheme.darkTextTheme.headline2,
+                  ),
                   const SizedBox(height: 30),
                 ],
               ),
             ),
             Center(
               child: Wrap(
-                  alignment: WrapAlignment.start,
-                  spacing: 12,
-                  children: createTagChips()),
+                alignment: WrapAlignment.start,
+                spacing: 12,
+                children: createTagChips(),
+              ),
             ),
           ],
         ),
