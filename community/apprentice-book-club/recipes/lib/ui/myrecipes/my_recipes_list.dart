@@ -60,11 +60,12 @@ class _MyRecipesListState extends State<MyRecipesList> {
               ),
               actions: <Widget>[
                 IconSlideAction(
-                    caption: 'Delete',
-                    color: Colors.transparent,
-                    foregroundColor: Colors.black,
-                    iconWidget: const Icon(Icons.delete, color: Colors.red),
-                    onTap: () {})
+                  caption: 'Delete',
+                  color: Colors.transparent,
+                  foregroundColor: Colors.black,
+                  iconWidget: const Icon(Icons.delete, color: Colors.red),
+                  onTap: () {},
+                )
               ],
               secondaryActions: <Widget>[
                 IconSlideAction(
