@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/models.dart';
-import '../../mock_service/mock_service.dart';
 import '../../network/model_response.dart';
 import '../../network/recipe_model.dart';
+import '../../network/service_interface.dart';
 import '../colors.dart';
 import '../recipe_card.dart';
 import '../recipes/recipe_details.dart';
@@ -117,10 +117,6 @@ class _RecipeListState extends State<RecipeList> {
               icon: const Icon(Icons.search),
               onPressed: () {
                 startSearch(searchTextController.text);
-                final currentFocus = FocusScope.of(context);
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.unfocus();
-                }
               },
             ),
             const SizedBox(width: 6.0),
@@ -198,7 +194,7 @@ class _RecipeListState extends State<RecipeList> {
       return Container();
     }
     return FutureBuilder<Response<Result<APIRecipeQuery>>>(
-      future: Provider.of<MockService>(context).queryRecipes(
+      future: Provider.of<ServiceInterface>(context).queryRecipes(
         searchTextController.text.trim(),
         currentStartPosition,
         currentEndPosition,
@@ -223,13 +219,11 @@ class _RecipeListState extends State<RecipeList> {
           }
           final query = (result as Success).value;
           inErrorState = false;
-          if (query != null) {
-            currentCount = query.count;
-            hasMore = query.more;
-            currentSearchList.addAll(query.hits);
-            if (query.to < currentEndPosition) {
-              currentEndPosition = query.to;
-            }
+          currentCount = query.count;
+          hasMore = query.more;
+          currentSearchList.addAll(query.hits);
+          if (query.to < currentEndPosition) {
+            currentEndPosition = query.to;
           }
           return _buildRecipeList(context, currentSearchList);
         } else {
@@ -269,20 +263,23 @@ class _RecipeListState extends State<RecipeList> {
     final recipe = hits[index].recipe;
     return GestureDetector(
       onTap: () {
-        Navigator.push(topLevelContext, MaterialPageRoute(
-          builder: (context) {
-            final detailRecipe = Recipe(
-              label: recipe.label,
-              image: recipe.image,
-              url: recipe.url,
-              calories: recipe.calories,
-              totalTime: recipe.totalTime,
-              totalWeight: recipe.totalWeight,
-            );
-            detailRecipe.ingredients = convertIngredients(recipe.ingredients);
-            return RecipeDetails(recipe: detailRecipe);
-          },
-        ));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              final detailRecipe = Recipe(
+                label: recipe.label,
+                image: recipe.image,
+                url: recipe.url,
+                calories: recipe.calories,
+                totalTime: recipe.totalTime,
+                totalWeight: recipe.totalWeight,
+              );
+              detailRecipe.ingredients = convertIngredients(recipe.ingredients);
+              return RecipeDetails(recipe: detailRecipe);
+            },
+          ),
+        );
       },
       child: recipeCard(recipe),
     );

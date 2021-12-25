@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/memory_repository.dart';
 import '../../data/models/recipe.dart';
+import '../../data/repository.dart';
 import '../../network/recipe_model.dart';
 import '../colors.dart';
 
@@ -15,7 +15,7 @@ class RecipeDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final repository = Provider.of<MemoryRepository>(context);
+    final repository = Provider.of<Repository>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
