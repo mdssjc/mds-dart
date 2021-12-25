@@ -1,9 +1,10 @@
-import 'dart:convert';
 import 'dart:math';
 
+import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../network/model_response.dart';
 import '../../network/recipe_model.dart';
 import '../../network/recipe_service.dart';
 import '../colors.dart';
@@ -57,12 +58,6 @@ class _RecipeListState extends State<RecipeList> {
         }
       }
     });
-  }
-
-  Future<APIRecipeQuery> getRecipeData(String query, int from, int to) async {
-    final recipeJson = await RecipeService().getRecipes(query, from, to);
-    final recipeMap = json.decode(recipeJson);
-    return APIRecipeQuery.fromJson(recipeMap);
   }
 
   @override
@@ -200,9 +195,12 @@ class _RecipeListState extends State<RecipeList> {
     if (searchTextController.text.length < 3) {
       return Container();
     }
-    return FutureBuilder<APIRecipeQuery>(
-      future: getRecipeData(searchTextController.text.trim(),
-          currentStartPosition, currentEndPosition),
+    return FutureBuilder<Response<Result<APIRecipeQuery>>>(
+      future: RecipeService.create().queryRecipes(
+        searchTextController.text.trim(),
+        currentStartPosition,
+        currentEndPosition,
+      ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
@@ -216,20 +214,25 @@ class _RecipeListState extends State<RecipeList> {
           }
 
           loading = false;
-          final query = snapshot.data;
+          final result = snapshot.data?.body;
+          if (result is Error) {
+            inErrorState = true;
+            return _buildRecipeList(context, currentSearchList);
+          }
+          final query = (result as Success).value;
           inErrorState = false;
-          if (query != null) {
-            currentCount = query.count;
-            hasMore = query.more;
-            currentSearchList.addAll(query.hits);
-            if (query.to < currentEndPosition) {
-              currentEndPosition = query.to;
-            }
+          currentCount = query.count;
+          hasMore = query.more;
+          currentSearchList.addAll(query.hits);
+          if (query.to < currentEndPosition) {
+            currentEndPosition = query.to;
           }
           return _buildRecipeList(context, currentSearchList);
         } else {
           if (currentCount == 0) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           } else {
             return _buildRecipeList(context, currentSearchList);
           }
@@ -262,7 +265,7 @@ class _RecipeListState extends State<RecipeList> {
     final recipe = hits[index].recipe;
     return GestureDetector(
       onTap: () {
-        Navigator.push(topLevelContext, MaterialPageRoute(
+        Navigator.push(context, MaterialPageRoute(
           builder: (context) {
             return const RecipeDetails();
           },
