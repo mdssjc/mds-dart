@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'list_page_screen.dart';
+import 'landing_page_screen.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const ListPage()));
+          .push(MaterialPageRoute(builder: (context) => const LandingPage()));
     });
 
     return Stack(

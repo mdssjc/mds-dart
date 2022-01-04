@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../bootstrap.dart';
 import '../constants.dart';
-import '../models/bottom_bar_item%20.dart';
+import '../models/bottom_bar_item.dart';
 
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({Key? key}) : super(key: key);

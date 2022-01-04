@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'models/attraction.dart';
-import 'models/bottom_bar_item .dart';
+import 'models/bottom_bar_item.dart';
 
 final List<Attraction> attractionsList = [
   Attraction(
