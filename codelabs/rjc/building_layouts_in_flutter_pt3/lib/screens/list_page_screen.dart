@@ -4,6 +4,7 @@ import '../bootstrap.dart';
 import '../constants.dart';
 import '../models/attraction.dart';
 import '../widgets/attraction_card_widget.dart';
+import '../widgets/bottom_bar_widget.dart';
 
 class ListPage extends StatelessWidget {
   const ListPage({Key? key}) : super(key: key);
@@ -50,6 +51,7 @@ class ListPage extends StatelessWidget {
                   },
                 ),
               ),
+              const BottomBarWidget(),
             ],
           ),
         ),

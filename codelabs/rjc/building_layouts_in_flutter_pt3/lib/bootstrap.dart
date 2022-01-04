@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'models/attraction.dart';
+import 'models/bottom_bar_item .dart';
 
 final List<Attraction> attractionsList = [
   Attraction(
@@ -37,4 +40,13 @@ final List<Attraction> attractionsList = [
     rating: 4,
     location: 'Tallaboa, PR',
   ),
+];
+
+final List<BottomBarItem> barItemsList = [
+  BottomBarItem(label: 'Home', isSelected: true, icon: Icons.home),
+  BottomBarItem(label: 'Account', isSelected: false, icon: Icons.person),
+  BottomBarItem(
+      label: 'Bookings', isSelected: false, icon: Icons.pending_actions),
+  BottomBarItem(label: 'Payments', isSelected: false, icon: Icons.payments),
+  BottomBarItem(label: 'More', isSelected: false, icon: Icons.more_horiz),
 ];
