@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../utils.dart';
-import 'donut_shop_main_screen.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -18,9 +17,10 @@ class SplashPageState extends State<SplashPage>
   @override
   void initState() {
     super.initState();
-    donutController =
-        AnimationController(duration: const Duration(seconds: 5), vsync: this)
-          ..repeat();
+    donutController = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this,
+    )..repeat();
 
     rotationAnimation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
       parent: donutController!,
@@ -37,8 +37,7 @@ class SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const DonutShopMain()));
+      Utils.mainAppNav.currentState!.pushReplacementNamed('/main');
     });
 
     return Scaffold(
@@ -56,7 +55,7 @@ class SplashPageState extends State<SplashPage>
                 height: 100,
               ),
             ),
-            Image.network(Utils.donutLogoWhiteText, width: 150, height: 150)
+            Image.network(Utils.donutLogoWhiteText, width: 150, height: 150),
           ],
         ),
       ),
