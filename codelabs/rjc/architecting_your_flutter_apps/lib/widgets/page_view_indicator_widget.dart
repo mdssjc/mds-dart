@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../utils.dart';
 
-// ignore: must_be_immutable
 class PageViewIndicator extends StatelessWidget {
-  PageController? controller;
-  int? numberOfPages;
-  int? currentPage;
+  final PageController? controller;
+  final int? numberOfPages;
+  final int? currentPage;
 
-  PageViewIndicator(
+  const PageViewIndicator(
       {Key? key, this.controller, this.numberOfPages, this.currentPage})
       : super(key: key);
 

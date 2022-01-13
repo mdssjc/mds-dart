@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'donut_card_widget.dart';
 
-// ignore: must_be_immutable
 class DonutList extends StatefulWidget {
-  List<DonutModel>? donuts;
+  final List<DonutModel>? donuts;
 
-  DonutList({Key? key, this.donuts}) : super(key: key);
+  const DonutList({Key? key, this.donuts}) : super(key: key);
 
   @override
   State<DonutList> createState() => _DonutListState();
