@@ -2,6 +2,11 @@ import 'dart_regular_data_class.dart' as regular;
 import 'freezed_classes.dart';
 
 void main() {
+  executeDataClass();
+  executeSealedUnionClass();
+}
+
+void executeDataClass() {
   const user = User('Matt', age: 20);
   final user2 = user.copyWith(name: 'John');
 
@@ -31,3 +36,35 @@ void main() {
   final User deserializedRegular = User.fromJson(serializedRegular);
   print(deserializedRegular);
 }
+
+void executeSealedUnionClass() {
+  final result = performOperationOn(2, OperationNested.add(2));
+  print(result);
+
+  final resultMaybe = performOperationOnMaybe(2, OperationNested.add(2));
+  print(resultMaybe);
+
+  final result1 = performOperationOnn(2, OperationNonNested.add(2));
+  final result2 = performOperationOnn(2, Add(2));
+
+  print(result1);
+  print(result2);
+}
+
+int performOperationOn(int operand, OperationNested operation) =>
+    operation.when(
+      add: (value) => operand + value,
+      subtract: (value) => operand - value,
+    );
+
+int performOperationOnMaybe(int operand, OperationNested operation) =>
+    operation.maybeMap(
+      subtract: (value) => operand - value.value,
+      orElse: () => 0,
+    );
+
+int performOperationOnn(int operand, OperationNonNested operation) =>
+    operation.when(
+      add: (value) => operand + value,
+      subtract: (value) => operand - value,
+    );
