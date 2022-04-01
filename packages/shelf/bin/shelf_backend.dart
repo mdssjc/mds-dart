@@ -1,8 +1,10 @@
-import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
+import 'server_router_handler.dart';
+
 Future<void> main() async {
-  final server =
-      await shelf_io.serve((request) => Response.ok('ok'), 'localhost', 8080);
+  var _server = ServerRouterHandler();
+
+  final server = await shelf_io.serve(_server.handler, 'localhost', 8080);
   print('Server started');
 }
