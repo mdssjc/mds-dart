@@ -1,17 +1,21 @@
 import 'package:shelf/shelf.dart';
 
-import 'api/blog_api.dart';
-import 'api/login_api.dart';
+import 'apis/blog_api.dart';
+import 'apis/login_api.dart';
 import 'infra/custom_server.dart';
+import 'infra/middleware_interception.dart';
+import 'services/news_service.dart';
 import 'utils/custom_env.dart';
 
 Future<void> main(List<String> arguments) async {
   CustomEnv.fromFile('.env-dev');
 
-  var cascadeHandler = Cascade().add(LoginApi().handler).add(BlogApi().handler);
+  var cascadeHandler =
+      Cascade().add(LoginApi().handler).add(BlogApi(NewsService()).handler);
 
   var handler = Pipeline()
       .addMiddleware(logRequests())
+      .addMiddleware(MiddlewareInterception().middleware)
       .addHandler(cascadeHandler.handler);
 
   CustomServer().initialize(
