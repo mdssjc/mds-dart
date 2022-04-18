@@ -18,6 +18,8 @@ Future<void> main(List<String> arguments) async {
   var handler = Pipeline()
       .addMiddleware(logRequests())
       .addMiddleware(MiddlewareInterception().middleware)
+      .addMiddleware(SecurityServiceImpl().authorization)
+      .addMiddleware(SecurityServiceImpl().verifyJwt)
       .addHandler(cascadeHandler.handler);
 
   CustomServer().initialize(
