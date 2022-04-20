@@ -11,16 +11,19 @@ import 'utils/custom_env.dart';
 Future<void> main(List<String> arguments) async {
   CustomEnv.fromFile('.env-dev');
 
+  var _securityService = SecurityServiceImpl();
   var cascadeHandler = Cascade()
-      .add(LoginApi(SecurityServiceImpl()).handler)
-      .add(BlogApi(NewsService()).handler);
+      .add(LoginApi(_securityService).getHandler())
+      .add(BlogApi(NewsService()).getHandler(middlewares: [
+        _securityService.authorization,
+        _securityService.verifyJwt
+      ]))
+      .handler;
 
   var handler = Pipeline()
       .addMiddleware(logRequests())
       .addMiddleware(MiddlewareInterception().middleware)
-      .addMiddleware(SecurityServiceImpl().authorization)
-      .addMiddleware(SecurityServiceImpl().verifyJwt)
-      .addHandler(cascadeHandler.handler);
+      .addHandler(cascadeHandler);
 
   CustomServer().initialize(
     handler: handler,
