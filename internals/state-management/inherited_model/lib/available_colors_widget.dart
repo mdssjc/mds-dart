@@ -45,10 +45,9 @@ class AvailableColorsWidget extends InheritedModel<AvailableColors> {
   static AvailableColorsWidget of(
     BuildContext context,
     AvailableColors aspect,
-  ) {
-    return InheritedModel.inheritFrom<AvailableColorsWidget>(
-      context,
-      aspect: aspect,
-    )!;
-  }
+  ) =>
+      InheritedModel.inheritFrom<AvailableColorsWidget>(
+        context,
+        aspect: aspect,
+      )!;
 }

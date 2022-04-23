@@ -18,7 +18,6 @@ class ApiProvider extends InheritedWidget {
     return uuid != oldWidget.uuid;
   }
 
-  static ApiProvider of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ApiProvider>()!;
-  }
+  static ApiProvider of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<ApiProvider>()!;
 }
