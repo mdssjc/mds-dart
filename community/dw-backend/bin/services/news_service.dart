@@ -4,6 +4,7 @@ import 'generic_service.dart';
 
 class NewsService implements GenericService<NewsModel> {
   final List<NewsModel> _fakeDb = [];
+
   @override
   bool delete(int id) {
     _fakeDb.removeWhere((element) => element.id == id);

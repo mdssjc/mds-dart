@@ -5,6 +5,7 @@ import '../infra/security/security_service.dart';
 
 abstract class Api {
   Handler getHandler({List<Middleware>? middlewares, bool isSecurity = false});
+
   Handler createHandler({
     required Handler router,
     List<Middleware>? middlewares,

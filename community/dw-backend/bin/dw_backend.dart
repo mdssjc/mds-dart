@@ -7,7 +7,7 @@ import 'infra/dependency_injector/injects.dart';
 import 'infra/middleware_interception.dart';
 import 'utils/custom_env.dart';
 
-Future<void> main(List<String> arguments) async {
+void main() async {
   CustomEnv.fromFile('.env-dev');
 
   final _di = Injects.initialize();

@@ -38,6 +38,10 @@ class BlogApi extends Api {
       return Response.ok('Today');
     });
 
-    return createHandler(router: router, middlewares: middlewares);
+    return createHandler(
+      router: router,
+      isSecurity: isSecurity,
+      middlewares: middlewares,
+    );
   }
 }
