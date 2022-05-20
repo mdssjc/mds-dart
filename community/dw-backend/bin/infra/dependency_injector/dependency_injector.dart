@@ -1,13 +1,12 @@
 typedef T InstanceCreator<T>();
 
 class DependencyInjector {
+  static final _singleton = DependencyInjector._();
+  final _instanceMap = Map<Type, _InstanceGenerator<Object>>();
+
   DependencyInjector._();
 
-  static final _singleton = DependencyInjector._();
-
   factory DependencyInjector() => _singleton;
-
-  final _instanceMap = Map<Type, _InstanceGenerator<Object>>();
 
   void register<T extends Object>(
     InstanceCreator<T> instance, {
@@ -31,7 +30,6 @@ class DependencyInjector {
 class _InstanceGenerator<T> {
   T? _instance;
   bool _isFirstGet = false;
-
   final InstanceCreator<T> _instanceCreator;
 
   _InstanceGenerator(this._instanceCreator, bool isSingleton)
