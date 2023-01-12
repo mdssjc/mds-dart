@@ -39,7 +39,9 @@ class DoodleDash extends FlameGame
   void update(double dt) {
     super.update(dt);
 
-    // Losing the game: Add isGameOver check
+    if (gameManager.isGameOver) {
+      return;
+    }
 
     if (gameManager.isIntro) {
       overlays.add('mainMenuOverlay');
@@ -49,10 +51,29 @@ class DoodleDash extends FlameGame
     if (gameManager.isPlaying) {
       checkLevelUp();
 
-      // Core gameplay: Add camera code to follow Dash during game play
+      final Rect worldBounds = Rect.fromLTRB(
+        0,
+        camera.position.y - screenBufferSpace,
+        camera.gameSize.x,
+        camera.position.y + _world.size.y,
+      );
+      camera.worldBounds = worldBounds;
+      if (player.isMovingDown) {
+        camera.worldBounds = worldBounds;
+      }
 
-      // Losing the game: Add the first loss condition.
-      // Game over if Dash falls off screen!
+      var isInTopHalfOfScreen = player.position.y <= (_world.size.y / 2);
+      if (!player.isMovingDown && isInTopHalfOfScreen) {
+        camera.followComponent(player);
+      }
+
+      if (player.position.y >
+          camera.position.y +
+              _world.size.y +
+              player.size.y +
+              screenBufferSpace) {
+        onLose();
+      }
     }
   }
 
@@ -69,6 +90,16 @@ class DoodleDash extends FlameGame
     if (children.contains(objectManager)) objectManager.removeFromParent();
 
     levelManager.reset();
+
+    player.reset();
+    camera.worldBounds = Rect.fromLTRB(
+      0,
+      -_world.size.y, // top of screen is 0, so negative is already off screen
+      camera.gameSize.x,
+      _world.size.y +
+          screenBufferSpace, // makes sure bottom bound of game is below bottom of screen
+    );
+    camera.followComponent(player);
 
     player.resetPosition();
 
@@ -95,11 +126,15 @@ class DoodleDash extends FlameGame
     overlays.remove('mainMenuOverlay');
   }
 
-  // Losing the game: Add an onLose method
-
   void resetGame() {
     startGame();
     overlays.remove('gameOverOverlay');
+  }
+
+  void onLose() {
+    gameManager.state = GameState.gameOver;
+    player.removeFromParent();
+    overlays.add('gameOverOverlay');
   }
 
   void togglePauseState() {
@@ -116,7 +151,7 @@ class DoodleDash extends FlameGame
 
       objectManager.configure(levelManager.level, levelManager.difficulty);
 
-      // Core gameplay: Call setJumpSpeed
+      player.setJumpSpeed(levelManager.jumpSpeed);
     }
   }
 }

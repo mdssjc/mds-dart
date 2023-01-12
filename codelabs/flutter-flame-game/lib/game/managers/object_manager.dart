@@ -72,8 +72,8 @@ class ObjectManager extends Component with HasGameRef<DoodleDash> {
       gameRef.gameManager.increaseScore();
 
       _cleanupPlatforms();
-      // Losing the game: Add call to _maybeAddEnemy()
-      // Powerups: Add call to _maybeAddPowerup();
+      _maybeAddEnemy();
+      _maybeAddPowerup();
     }
 
     super.update(dt);
@@ -98,8 +98,23 @@ class ObjectManager extends Component with HasGameRef<DoodleDash> {
   }
 
   void enableLevelSpecialty(int level) {
-    // More on Platforms: Add switch statement to enable SpringBoard for
-    // level 1 and BrokenPlatform for level 2
+    switch (level) {
+      case 1:
+        enableSpecialty('spring');
+        break;
+      case 2:
+        enableSpecialty('broken');
+        break;
+      case 3:
+        enableSpecialty('noogler');
+        break;
+      case 4:
+        enableSpecialty('rocket');
+        break;
+      case 5:
+        enableSpecialty('enemy');
+        break;
+    }
   }
 
   void resetSpecialties() {
@@ -108,7 +123,6 @@ class ObjectManager extends Component with HasGameRef<DoodleDash> {
     }
   }
 
-  // Exposes a way for the DoodleDash component to change difficulty mid-game
   void configure(int nextLevel, Difficulty config) {
     minVerticalDistanceToNextPlatform = gameRef.levelManager.minDistance;
     maxVerticalDistanceToNextPlatform = gameRef.levelManager.maxDistance;
@@ -150,10 +164,76 @@ class ObjectManager extends Component with HasGameRef<DoodleDash> {
   }
 
   Platform _semiRandomPlatform(Vector2 position) {
+    if (specialPlatforms['spring'] == true &&
+        probGen.generateWithProbability(15)) {
+      return SpringBoard(position: position);
+    }
+
+    if (specialPlatforms['broken'] == true &&
+        probGen.generateWithProbability(10)) {
+      return BrokenPlatform(position: position);
+    }
+
     return NormalPlatform(position: position);
   }
 
-  // Losing the game: Add enemy code
+  final List<EnemyPlatform> _enemies = [];
+  void _maybeAddEnemy() {
+    if (specialPlatforms['enemy'] != true) {
+      return;
+    }
+    if (probGen.generateWithProbability(20)) {
+      var enemy = EnemyPlatform(
+        position: Vector2(_generateNextX(100), _generateNextY()),
+      );
+      add(enemy);
+      _enemies.add(enemy);
+      _cleanupEnemies();
+    }
+  }
 
-  // Powerups: Add Power-Up code
+  void _cleanupEnemies() {
+    final screenBottom = gameRef.player.position.y +
+        (gameRef.size.x / 2) +
+        gameRef.screenBufferSpace;
+
+    while (_enemies.isNotEmpty && _enemies.first.position.y > screenBottom) {
+      remove(_enemies.first);
+      _enemies.removeAt(0);
+    }
+  }
+
+  final List<PowerUp> _powerups = [];
+
+  void _maybeAddPowerup() {
+    if (specialPlatforms['noogler'] == true &&
+        probGen.generateWithProbability(20)) {
+      var nooglerHat = NooglerHat(
+        position: Vector2(_generateNextX(75), _generateNextY()),
+      );
+      add(nooglerHat);
+      _powerups.add(nooglerHat);
+    } else if (specialPlatforms['rocket'] == true &&
+        probGen.generateWithProbability(15)) {
+      var rocket = Rocket(
+        position: Vector2(_generateNextX(50), _generateNextY()),
+      );
+      add(rocket);
+      _powerups.add(rocket);
+    }
+
+    _cleanupPowerups();
+  }
+
+  void _cleanupPowerups() {
+    final screenBottom = gameRef.player.position.y +
+        (gameRef.size.x / 2) +
+        gameRef.screenBufferSpace;
+    while (_powerups.isNotEmpty && _powerups.first.position.y > screenBottom) {
+      if (_powerups.first.parent != null) {
+        remove(_powerups.first);
+      }
+      _powerups.removeAt(0);
+    }
+  }
 }
