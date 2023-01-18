@@ -1,15 +1,15 @@
 # Run with `flutter pub run ffigen --config ffigen.yaml`.
 name: FlutterFfigenBindings
 description: |
-  Bindings for `src/flutter_ffigen.h`.
+  Bindings for `src/duktape.h`.
 
   Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
-output: 'lib/flutter_ffigen_bindings_generated.dart'
+output: 'lib/duktape_bindings_generated.dart'
 headers:
   entry-points:
-    - 'src/flutter_ffigen.h'
+    - 'src/duktape.h'
   include-directives:
-    - 'src/flutter_ffigen.h'
+    - 'src/duktape.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types
